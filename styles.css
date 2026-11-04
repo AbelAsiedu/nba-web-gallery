@@ -1,0 +1,886 @@
+/* =====================================================================
+   NBA Stars and Arenas - shared stylesheet for both gallery pages
+   PBSE307 Web Development Fundamentals - Abel Asiedu
+
+   Design idea: a basketball half-court drawn in line art is the one bold
+   moment (hero). Everything else is quiet: one navy, one orange (the ball),
+   generous space, and photographs treated like plates in a printed report.
+
+   Contents
+   1. Fonts and design tokens
+   2. Base and layout helpers
+   3. Header and navigation
+   4. Tickers (the marquee lines)
+   5. Hero and the half-court drawing
+   6. Sections, about block, buttons
+   7. Player and arena plates
+   8. Video clips
+   9. Tables and lists
+   10. Footer
+   11. Responsive rules
+   12. Reduced motion
+   ===================================================================== */
+
+
+/* ---------- 1. Fonts and design tokens ---------- */
+
+@font-face {
+    font-family: "Inter Display";
+    src: url("fonts/inter-display-800.woff") format("woff");
+    font-weight: 800;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Inter Display";
+    src: url("fonts/inter-display-700.woff") format("woff");
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Inter";
+    src: url("fonts/inter-400.woff") format("woff");
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Inter";
+    src: url("fonts/inter-600.woff") format("woff");
+    font-weight: 600;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Lora";
+    src: url("fonts/Lora-Variable.ttf") format("truetype");
+    font-weight: 400 700;
+    font-display: swap;
+}
+
+:root {
+    /* colour */
+    --ink: #0b1630;          /* court navy: hero, header, footer, table heads */
+    --ink-soft: #14244f;     /* slightly lighter navy for strips */
+    --paint: #2447e0;        /* key blue: links and focus on light areas */
+    --ball: #ff6b1f;         /* ball orange: the only accent */
+    --paper: #ffffff;
+    --mist: #f1f4f9;         /* cool light grey for alternate bands */
+    --rule: #dce2ec;         /* hairlines */
+    --slate: #475269;        /* secondary text */
+    --text: #101a33;         /* main text */
+    --on-dark: #c7d2ec;      /* body text on navy */
+
+    /* type */
+    --display: "Inter Display", "Inter", "Segoe UI", system-ui, sans-serif;
+    --ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --serif: "Lora", Georgia, "Times New Roman", serif;
+
+    /* shape */
+    --radius-photo: 6px;
+    --radius-panel: 14px;
+    --gutter: clamp(20px, 4vw, 48px);
+    --gap: clamp(20px, 3vw, 40px);
+}
+
+
+/* ---------- 2. Base and layout helpers ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+a {
+    color: var(--paint);
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+.wrap {
+    width: min(1180px, 100% - 2 * var(--gutter));
+    margin-inline: auto;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 100;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: var(--ball);
+    color: var(--ink);
+    font: 600 0.95rem var(--ui);
+    text-decoration: none;
+}
+.skip-link:focus {
+    top: 12px;
+}
+
+a:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--ball);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+
+/* ---------- 3. Header and navigation ---------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 22, 48, 0.94);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-header .wrap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 64px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font: 800 1.05rem var(--display);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* a plain ball drawn with CSS: orange disc with two seam lines */
+.brand__mark {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--ball);
+    overflow: hidden;
+}
+.brand__mark::before,
+.brand__mark::after {
+    content: "";
+    position: absolute;
+    background: var(--ink);
+}
+.brand__mark::before {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    transform: translateX(-50%);
+}
+.brand__mark::after {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    transform: translateY(-50%);
+}
+
+.nav {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
+.nav a {
+    padding: 9px 14px;
+    border-radius: 8px;
+    color: #c9d3ea;
+    font: 600 0.9rem var(--ui);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+}
+.nav a:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+}
+.nav a[aria-current="page"] {
+    color: #fff;
+    box-shadow: inset 0 -2px 0 var(--ball);
+    border-radius: 8px 8px 0 0;
+}
+
+
+/* ---------- 4. Tickers (the <marquee> lines) ---------- */
+
+.ticker {
+    display: block;
+    width: 100%;
+    padding: 13px 0;
+    border-block: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--slate);
+    font: 600 0.92rem/1 var(--ui);
+}
+
+/* slim strip directly under the header */
+.ticker--top {
+    padding: 11px 0;
+    border: 0;
+    background: var(--ink-soft);
+    color: #dde6fa;
+}
+
+/* strip that closes the page, above the footer */
+.ticker--close {
+    border-bottom: 0;
+    background: var(--mist);
+}
+
+/* vertical marquee needs a fixed height */
+.ticker--up {
+    height: 72px;
+    padding: 0;
+    text-align: center;
+}
+
+/* a short ticker that sits under a section heading */
+.ticker--section {
+    margin-bottom: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+}
+
+
+/* ---------- 5. Hero and the half-court drawing ---------- */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--ink);
+    color: #fff;
+}
+
+/* faint arena spotlight behind the court */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(38% 62% at 76% 34%, rgba(36, 71, 224, 0.42), transparent 72%);
+}
+
+.hero__court {
+    position: absolute;
+    z-index: -1;
+    top: 44px;
+    right: max(var(--gutter), calc((100% - 1180px) / 2));
+    height: calc(100% - 214px);
+    width: auto;
+    overflow: visible;
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.6;
+}
+
+.hero__court .rim {
+    stroke: var(--ball);
+    stroke-width: 2.4;
+}
+
+/* the lines draw themselves once, when the page opens */
+.hero__court .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-line 1.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.hero__court .d2 { animation-delay: 0.2s; }
+.hero__court .d3 { animation-delay: 0.4s; }
+.hero__court .d4 { animation-delay: 0.6s; }
+.hero__court .d5 { animation-delay: 0.8s; }
+
+/* the lower half of the free-throw circle is dashed on a real court */
+.hero__court .dash {
+    stroke-dasharray: 5 7;
+}
+
+@keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+}
+
+.hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    column-gap: clamp(28px, 6vw, 88px);
+    row-gap: clamp(40px, 6vw, 72px);
+    padding-top: clamp(52px, 8vw, 104px);
+}
+
+.hero h1 {
+    margin: 0 0 24px;
+    font: 800 clamp(2.7rem, 6.4vw, 5.5rem) / 0.96 var(--display);
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+}
+
+.hero__lead {
+    max-width: 44ch;
+    margin: 0 0 32px;
+    color: var(--on-dark);
+    font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+    line-height: 1.6;
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.byline {
+    margin: 0;
+    color: #9fb0d8;
+    font: 400 0.9rem/1.5 var(--ui);
+}
+
+/* contents: a ruled strip along the bottom of the hero */
+.toc {
+    grid-column: 1 / -1;
+    padding-bottom: 10px;
+}
+
+.toc ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.toc li {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.toc a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 18px 0 26px;
+    color: #fff;
+    font: 700 1.08rem/1.25 var(--display);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.toc a:hover {
+    color: var(--ball);
+}
+.toc a span {
+    color: #aebfe6;
+    font: 400 0.9rem var(--ui);
+}
+
+
+/* ---------- 6. Sections, about block, buttons ---------- */
+
+.band {
+    padding-block: clamp(56px, 8vw, 104px);
+}
+.band--mist {
+    background: var(--mist);
+}
+
+.section-head {
+    max-width: 760px;
+    margin-bottom: 28px;
+}
+
+.band h2,
+.split h2 {
+    margin: 0 0 12px;
+    font: 800 clamp(1.9rem, 3.6vw, 2.9rem) / 1.05 var(--display);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.section-head p {
+    margin: 0;
+    max-width: 58ch;
+    color: var(--slate);
+}
+
+.about {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(28px, 6vw, 88px);
+    align-items: start;
+}
+
+.about__copy p {
+    max-width: 62ch;
+}
+.about__copy p:first-child {
+    font-size: 1.2rem;
+    line-height: 1.65;
+}
+
+.facts {
+    margin: 28px 0 0;
+}
+.facts div {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid var(--rule);
+}
+.facts dt {
+    color: var(--slate);
+    font: 600 0.9rem/1.5 var(--ui);
+}
+.facts dd {
+    margin: 0;
+    font: 400 0.95rem/1.5 var(--ui);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 10px;
+    font: 600 0.95rem var(--ui);
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.btn--primary {
+    background: var(--ball);
+    color: var(--ink);
+}
+.btn--primary:hover {
+    background: #ff8247;
+}
+.btn--ghost {
+    color: #fff;
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+}
+.btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ---------- 7. Player and arena plates ---------- */
+
+/* team colours used for the thin rule above each caption */
+.t-lakers   { --team: #552583; }
+.t-celtics  { --team: #007a33; }
+.t-bulls    { --team: #ce1141; }
+.t-warriors { --team: #1d428a; }
+.t-clippers { --team: #c8102e; }
+.t-sixers   { --team: #006bb6; }
+.t-arena    { --team: var(--ink); }
+
+/* rows: photo, then caption. Subgrid keeps photos and captions aligned across a row */
+.lineup {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    column-gap: var(--gap);
+    row-gap: 0;
+    margin-bottom: calc(-1 * clamp(28px, 4vw, 48px));
+}
+.lineup--action {
+    grid-template-columns: 1fr 1fr 2fr;
+}
+.lineup--arenas {
+    grid-template-columns: 1fr 2fr;
+}
+
+.plate {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    margin: 0;
+    padding-bottom: clamp(28px, 4vw, 48px);
+}
+
+/* the photo frame: crops the picture without stretching it */
+.frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-photo);
+    background: var(--rule);
+    aspect-ratio: 4 / 5;
+}
+.plate--wide .frame {
+    aspect-ratio: auto;
+}
+.frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--pos, 50% 14%);
+}
+.pos-sixers { --pos: 72% 35%; }
+.pos-garden { --pos: 50% 68%; }
+.pos-chase  { --pos: 50% 58%; }
+
+.plate__body {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 3px solid var(--team, var(--rule));
+}
+
+.plate h3,
+.clip h3 {
+    margin: 0;
+    font: 800 1.4rem/1.15 var(--display);
+    letter-spacing: -0.02em;
+}
+
+.plate__team {
+    margin: 4px 0 10px;
+    color: var(--slate);
+    font: 600 0.92rem/1.4 var(--ui);
+}
+
+.details {
+    margin: 0;
+}
+.details div {
+    display: grid;
+    grid-template-columns: 5.4rem minmax(0, 1fr);
+    gap: 12px;
+    padding: 9px 0;
+    border-top: 1px solid var(--rule);
+}
+.details dt {
+    color: var(--slate);
+    font: 600 0.84rem/1.55 var(--ui);
+}
+.details dd {
+    margin: 0;
+    font: 400 0.95rem/1.55 var(--ui);
+}
+
+
+/* ---------- 8. Video clips ---------- */
+
+.clips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    column-gap: var(--gap);
+    row-gap: 0;
+    margin-bottom: calc(-1 * clamp(28px, 4vw, 48px));
+}
+
+.clip {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    margin: 0;
+    padding-bottom: clamp(28px, 4vw, 48px);
+}
+
+.clip .frame {
+    background: #000;
+}
+.clip video {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.clip__body {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 3px solid var(--ball);
+}
+.clip__body p {
+    margin: 10px 0 12px;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap);
+    align-items: start;
+}
+.split .clips {
+    grid-template-columns: minmax(0, 1fr);
+}
+/* both strips share one height so the two videos start level */
+.split .ticker--section {
+    height: 64px;
+    margin-bottom: 28px;
+    padding: 0;
+    line-height: 62px;
+}
+
+
+/* ---------- 9. Tables and lists ---------- */
+
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-panel);
+    background: var(--paper);
+}
+
+.data {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+    font: 400 0.95rem/1.5 var(--ui);
+}
+.data thead th {
+    padding: 15px 16px;
+    background: var(--ink);
+    color: #fff;
+    font: 600 0.88rem var(--ui);
+    text-align: left;
+    white-space: nowrap;
+}
+.data tbody th,
+.data tbody td {
+    padding: 14px 16px;
+    border-top: 1px solid var(--rule);
+    vertical-align: top;
+    text-align: left;
+}
+.data tbody th {
+    font-weight: 600;
+}
+.data tbody tr:nth-child(even) {
+    background: var(--mist);
+}
+.data .name {
+    min-width: 12rem;
+    font-weight: 600;
+}
+.data .num {
+    width: 4.5rem;
+    color: var(--slate);
+    font-variant-numeric: tabular-nums;
+}
+.data .file {
+    color: var(--slate);
+    font-size: 0.86rem;
+    white-space: nowrap;
+}
+
+.panels {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap);
+}
+.panel {
+    padding: 30px 32px 26px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-panel);
+    background: var(--paper);
+}
+.panel h3 {
+    margin: 0 0 14px;
+    font: 800 1.35rem/1.2 var(--display);
+    letter-spacing: -0.02em;
+}
+.panel ul,
+.panel ol {
+    margin: 0;
+    padding-left: 1.35rem;
+}
+.panel li {
+    margin: 0 0 10px;
+    padding-left: 6px;
+    line-height: 1.6;
+}
+.panel li::marker {
+    color: var(--ball);
+    font-weight: 700;
+}
+
+
+/* ---------- 10. Footer ---------- */
+
+.site-footer {
+    padding-block: 52px 44px;
+    background: var(--ink);
+    color: #b8c4e0;
+    font: 400 0.92rem/1.65 var(--ui);
+}
+.site-footer .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 36px;
+}
+.site-footer .brand {
+    margin-bottom: 14px;
+}
+.site-footer p {
+    max-width: 58ch;
+    margin: 0 0 10px;
+}
+.site-footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.site-footer li {
+    margin-bottom: 8px;
+}
+.site-footer a {
+    color: #fff;
+}
+.site-footer a:hover {
+    color: var(--ball);
+}
+
+
+/* ---------- 11. Responsive rules ---------- */
+
+@media (max-width: 960px) {
+    .hero__grid,
+    .about {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .hero__court {
+        top: 24px;
+        right: -22%;
+        height: 58%;
+        opacity: 0.4;
+    }
+    .details div {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    /* two small plates, then the wide plate across the full row */
+    .lineup--action {
+        grid-template-columns: 1fr 1fr;
+    }
+    .lineup--action .plate--wide {
+        grid-column: 1 / -1;
+    }
+    .plate--wide .frame {
+        aspect-ratio: 16 / 9;
+    }
+    .split {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 56px;
+    }
+}
+
+@media (max-width: 720px) {
+    .site-header .wrap {
+        flex-wrap: wrap;
+        gap: 4px 16px;
+        padding-block: 10px;
+    }
+    .nav {
+        width: 100%;
+        margin-left: -14px;
+    }
+
+    .lineup,
+    .lineup--action,
+    .lineup--arenas,
+    .clips {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+    }
+    .plate,
+    .clip {
+        width: 100%;
+        max-width: 480px;
+    }
+    .lineup--action .plate--wide,
+    .lineup--arenas .plate--wide {
+        max-width: 480px;
+    }
+    .plate--wide .frame {
+        aspect-ratio: 4 / 3;
+    }
+
+    .panels,
+    .site-footer .wrap {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .panel {
+        padding: 24px 22px 18px;
+    }
+    .facts div {
+        grid-template-columns: 6.2rem minmax(0, 1fr);
+    }
+}
+
+
+/* ---------- 12. Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .hero__court .draw {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+    .nav a,
+    .btn,
+    .toc a {
+        transition: none;
+    }
+}

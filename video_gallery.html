@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ============================================================
+     PBSE307 - Web Development Fundamentals
+     Task 2: Video Gallery (styled version)
+     Student: Abel Asiedu
+     Theme: NBA Highlights - Dunks, Shooting and Defence
+     Layout and colours come from styles.css.
+     ============================================================ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Six short NBA highlight clips: dunks, shooting and blocked shots.">
+    <title>NBA Highlights - Video Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to the videos</a>
+
+    <!-- ===================== HEADER ===================== -->
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="image_gallery.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                NBA Stars and Arenas
+            </a>
+            <nav class="nav" aria-label="Main">
+                <a href="image_gallery.html">Picture gallery</a>
+                <a href="video_gallery.html" aria-current="page">Video gallery</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Marquee 1: welcome message, scrolls from right to left -->
+    <marquee class="ticker ticker--top" direction="left" behavior="scroll" scrollamount="8">
+        Welcome to the NBA Highlights Video Gallery! &nbsp;&nbsp;&nbsp; Press play on any video to watch.
+    </marquee>
+
+    <main id="main">
+
+        <!-- ===================== HERO ===================== -->
+
+        <section class="hero">
+
+            <!-- Half basketball court in line art (decoration only) -->
+            <svg class="hero__court" viewBox="0 0 470 500" aria-hidden="true" focusable="false">
+                <g transform="translate(0 500) rotate(-90)">
+                    <rect class="draw d1" pathLength="1" x="0" y="0" width="500" height="470"/>
+                    <rect class="draw d2" pathLength="1" x="170" y="280" width="160" height="190"/>
+                    <path class="draw d3" pathLength="1" d="M30 470 L30 328 A237.5 237.5 0 0 1 470 328 L470 470"/>
+                    <path class="draw d4" pathLength="1" d="M190 280 A60 60 0 0 1 310 280"/>
+                    <path class="dash" d="M190 280 A60 60 0 0 0 310 280"/>
+                    <path class="draw d4" pathLength="1" d="M190 0 A60 60 0 0 0 310 0"/>
+                    <path class="draw d5" pathLength="1" d="M220 430 H280 M250 430 V425"/>
+                    <path class="draw d5" pathLength="1" d="M210 417.5 A40 40 0 0 1 290 417.5"/>
+                    <circle class="rim" cx="250" cy="417.5" r="7.5"/>
+                </g>
+            </svg>
+
+            <div class="wrap hero__grid">
+                <div class="hero__copy">
+                    <h1>NBA Highlights</h1>
+                    <p class="hero__lead">
+                        Six short clips of dunks, shooting and blocked shots from NBA games, ready to play on this page.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="#dunks">Watch the dunks</a>
+                        <a class="btn btn--ghost" href="image_gallery.html">See the pictures</a>
+                    </div>
+                    <p class="byline">Created by Abel Asiedu for PBSE307 Web Development Fundamentals, Pentecost University.</p>
+                </div>
+
+                <nav class="toc" aria-label="In this collection">
+                    <ul>
+                        <li><a href="#dunks">Powerful dunks <span>4 clips</span></a></li>
+                        <li><a href="#shooting">Shooting <span>1 clip</span></a></li>
+                        <li><a href="#defence">Defence and blocked shots <span>1 clip</span></a></li>
+                        <li><a href="#facts">Video information table <span>6 rows</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- ===================== ABOUT ===================== -->
+
+        <section class="band" id="about" aria-labelledby="about-title">
+            <div class="wrap about">
+                <div>
+                    <h2 id="about-title">About this video collection</h2>
+                    <dl class="facts">
+                        <div><dt>Theme</dt><dd>NBA highlights</dd></div>
+                        <div><dt>Clips</dt><dd>6, about 35 seconds in total</dd></div>
+                        <div><dt>Parts</dt><dd>Dunks, shooting and defence</dd></div>
+                        <div><dt>Playback</dt><dd>Every clip starts by itself, muted, and repeats</dd></div>
+                        <div><dt>Format</dt><dd>MP4 files stored in the Videos folder</dd></div>
+                    </dl>
+                </div>
+
+                <div class="about__copy">
+                    <p>
+                        This page is a small collection of six short video clips from National Basketball Association (NBA)
+                        games. The clips are saved inside the Videos folder of this project and are played with the HTML
+                        video tag, so they work without an internet connection. The theme is NBA highlights, and the clips are
+                        arranged in three parts: powerful dunks, shooting, and defence through blocked shots.
+                    </p>
+                    <p>
+                        The purpose of the collection is to show the different skills that make basketball exciting to watch.
+                        Viewers can enjoy the athletic dunks, watch a Golden State Warriors game from a post about Stephen
+                        Curry's shooting, and see how a defender can stop a shot at the last moment. Every video has a heading
+                        and a short description, and a table near the end gives the key facts about each clip. All the videos
+                        play automatically and repeat (autoplay and loop, with the sound muted because browsers only allow
+                        autoplay when the sound is off), and the controls are switched on so a viewer can unmute, pause and
+                        move through each video.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PART 1 : DUNKS ===================== -->
+
+        <section class="band band--mist" id="dunks" aria-labelledby="dunks-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="dunks-title">Powerful dunks</h2>
+                </div>
+
+                <!-- Marquee 2: moves left to right and bounces back (alternate) -->
+                <marquee class="ticker ticker--section" direction="right" behavior="alternate" scrollamount="4">
+                    Four clips of dunks and plays at the rim
+                </marquee>
+
+                <div class="clips">
+
+                    <figure class="clip">
+                        <div class="frame">
+                            <video width="720" height="716" controls muted autoplay loop playsinline>
+                                <source src="Videos/video_01.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <figcaption class="clip__body">
+                            <h3>Video 1: Anthony Edwards' Dunk Over the Jazz</h3>
+                            <p>
+                                Minnesota Timberwolves guard Anthony Edwards (No. 5, in white) turns a Utah Jazz turnover
+                                into a powerful dunk, shown from the wide view and a close replay. The commentary in the clip
+                                says "Edwards gets it back" and "threw it down".
+                            </p>
+                            <dl class="details">
+                                <div><dt>Category</dt><dd>Dunks</dd></div>
+                                <div><dt>Length</dt><dd>7.8 seconds</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="clip">
+                        <div class="frame">
+                            <video width="720" height="916" controls muted autoplay loop playsinline>
+                                <source src="Videos/video_02.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <figcaption class="clip__body">
+                            <h3>Video 2: Heat and Bulls Dunk Highlights</h3>
+                            <p>
+                                A very short clip with a Miami Heat game on the scoreboard, followed by a Chicago Bulls
+                                game. Because it is only a few seconds long, it loops, so the dunk plays again and again.
+                            </p>
+                            <dl class="details">
+                                <div><dt>Category</dt><dd>Dunks</dd></div>
+                                <div><dt>Length</dt><dd>4.7 seconds</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="clip">
+                        <div class="frame">
+                            <video width="720" height="948" controls muted autoplay loop playsinline>
+                                <source src="Videos/video_03.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <figcaption class="clip__body">
+                            <h3>Video 3: Clippers Plays, Part 1</h3>
+                            <p>
+                                Two plays from Los Angeles Clippers games: first a possession against the Philadelphia
+                                76ers on the Clippers' court, then a game against the Utah Jazz. The commentary in the clip
+                                says "The lock, again! Kawhi makes his move".
+                            </p>
+                            <dl class="details">
+                                <div><dt>Category</dt><dd>Dunks</dd></div>
+                                <div><dt>Length</dt><dd>3.0 seconds</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="clip">
+                        <div class="frame">
+                            <video width="720" height="948" controls muted autoplay loop playsinline>
+                                <source src="Videos/video_04.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <figcaption class="clip__body">
+                            <h3>Video 4: Clippers Plays, Part 2</h3>
+                            <p>
+                                Another Clippers possession against the 76ers. A Clippers player drives and the commentary
+                                shouts "Oh! And he takes out..." and then "Look out, Griffin! Look out!" as the play ends at the rim.
+                            </p>
+                            <dl class="details">
+                                <div><dt>Category</dt><dd>Dunks</dd></div>
+                                <div><dt>Length</dt><dd>3.8 seconds</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PARTS 2 AND 3 : SHOOTING AND DEFENCE ===================== -->
+
+        <div class="band">
+            <div class="wrap split">
+
+                <!-- PART 2 : SHOOTING -->
+                <section id="shooting" aria-labelledby="shooting-title">
+                    <h2 id="shooting-title">Shooting</h2>
+
+                    <!-- Marquee 3: slides in and stops -->
+                    <marquee class="ticker ticker--section" direction="left" behavior="slide" scrollamount="10">
+                        The shooting clip: Warriors against Nuggets
+                    </marquee>
+
+                    <div class="clips">
+                        <figure class="clip">
+                            <div class="frame">
+                                <video width="720" height="704" controls muted autoplay loop playsinline>
+                                    <source src="Videos/video_05.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <figcaption class="clip__body">
+                                <h3>Video 5: Stephen Curry's Shooting, Warriors against Nuggets</h3>
+                                <p>
+                                    A wide view of a Golden State Warriors and Denver Nuggets game at Ball Arena in Denver.
+                                    This clip comes from an NBA video post titled "Steph was PERFECT from the field", which
+                                    is about Stephen Curry's shooting. The scoreboard shows the second quarter with a close
+                                    score of 38 to 36.
+                                </p>
+                                <dl class="details">
+                                    <div><dt>Category</dt><dd>Shooting</dd></div>
+                                    <div><dt>Length</dt><dd>5.7 seconds</dd></div>
+                                </dl>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+                <!-- PART 3 : DEFENCE -->
+                <section id="defence" aria-labelledby="defence-title">
+                    <h2 id="defence-title">Defence and blocked shots</h2>
+
+                    <!-- Marquee 4: text scrolls upwards -->
+                    <marquee class="ticker ticker--section ticker--up" direction="up" behavior="scroll" scrollamount="2">
+                        A great block can change the whole game!
+                    </marquee>
+
+                    <div class="clips">
+                        <figure class="clip">
+                            <div class="frame">
+                                <video width="720" height="948" controls muted autoplay loop playsinline>
+                                    <source src="Videos/video_06.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <figcaption class="clip__body">
+                                <h3>Video 6: The Top 10 Best Blocks</h3>
+                                <p>
+                                    A clip from a countdown of the best blocks in NBA history. It opens with the title card
+                                    and a player in a yellow Lakers jersey leaping, then shows the number 10 block in a game
+                                    on a Brooklyn Nets court.
+                                </p>
+                                <dl class="details">
+                                    <div><dt>Category</dt><dd>Defence</dd></div>
+                                    <div><dt>Length</dt><dd>9.6 seconds</dd></div>
+                                </dl>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- ===================== VIDEO INFORMATION TABLE ===================== -->
+
+        <section class="band band--mist" id="facts" aria-labelledby="facts-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="facts-title">Video information table</h2>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="data">
+                        <caption class="sr-only">Facts about each of the 6 videos in the collection</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Video No.</th>
+                                <th scope="col">File</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Length</th>
+                                <th scope="col">What the clip shows</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="num">1</td>
+                                <td class="file">Videos/video_01.mp4</td>
+                                <td class="name">Anthony Edwards' Dunk Over the Jazz</td>
+                                <td>Dunks</td>
+                                <td>7.8 seconds</td>
+                                <td>Timberwolves guard Edwards dunks after a Jazz turnover, with a close replay.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">2</td>
+                                <td class="file">Videos/video_02.mp4</td>
+                                <td class="name">Heat and Bulls Dunk Highlights</td>
+                                <td>Dunks</td>
+                                <td>4.7 seconds</td>
+                                <td>Short dunk clip from a Heat game and a Bulls game.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">3</td>
+                                <td class="file">Videos/video_03.mp4</td>
+                                <td class="name">Clippers Plays, Part 1</td>
+                                <td>Dunks</td>
+                                <td>3.0 seconds</td>
+                                <td>Clippers against the 76ers, then against the Jazz; commentary mentions Kawhi.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">4</td>
+                                <td class="file">Videos/video_04.mp4</td>
+                                <td class="name">Clippers Plays, Part 2</td>
+                                <td>Dunks</td>
+                                <td>3.8 seconds</td>
+                                <td>Clippers against the 76ers; commentary says "Look out, Griffin!".</td>
+                            </tr>
+                            <tr>
+                                <td class="num">5</td>
+                                <td class="file">Videos/video_05.mp4</td>
+                                <td class="name">Stephen Curry's Shooting</td>
+                                <td>Shooting</td>
+                                <td>5.7 seconds</td>
+                                <td>Warriors against Nuggets at Ball Arena, second quarter, score 38 to 36.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">6</td>
+                                <td class="file">Videos/video_06.mp4</td>
+                                <td class="name">The Top 10 Best Blocks</td>
+                                <td>Defence</td>
+                                <td>9.6 seconds</td>
+                                <td>Title card, a Lakers player leaping, and the number 10 block on a Nets court.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== LISTS ===================== -->
+
+        <section class="band" id="learn" aria-labelledby="learn-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="learn-title">What you can learn and how to watch</h2>
+                </div>
+
+                <div class="panels">
+                    <div class="panel">
+                        <h3>Topics covered</h3>
+                        <!-- Unordered list with circle markers -->
+                        <ul type="circle">
+                            <li>Dunks and plays at the rim (Videos 1 to 4)</li>
+                            <li>Shooting in a Warriors game (Video 5)</li>
+                            <li>Defence and blocked shots (Video 6)</li>
+                            <li>The look of different NBA courts and team colours</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Recommended viewing order</h3>
+                        <!-- Ordered list with numbers -->
+                        <ol type="1">
+                            <li>Start with Video 1. All six videos play by themselves and repeat.</li>
+                            <li>Watch the other dunk clips, Videos 2 to 4.</li>
+                            <li>Watch the shooting clip in Video 5.</li>
+                            <li>Finish with the blocks in Video 6.</li>
+                            <li>Use the table above to review each clip.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Marquee 5: closing message -->
+    <marquee class="ticker ticker--close" direction="right" behavior="scroll" scrollamount="5">
+        Thank you for watching! &nbsp;&nbsp;&nbsp; Visit the Picture Gallery page to see NBA players and arenas.
+    </marquee>
+
+    <!-- ===================== FOOTER ===================== -->
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <a class="brand" href="image_gallery.html">
+                    <span class="brand__mark" aria-hidden="true"></span>
+                    NBA Stars and Arenas
+                </a>
+                <p>Created by Abel Asiedu for PBSE307 Web Development Fundamentals at Pentecost University.</p>
+                <p>The video clips belong to the NBA, its teams and the people who posted them. They appear here for a class assignment only.</p>
+            </div>
+            <nav aria-label="Footer">
+                <ul>
+                    <li><a href="image_gallery.html">Picture gallery</a></li>
+                    <li><a href="video_gallery.html">Video gallery</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ============================================================
+     PBSE307 - Web Development Fundamentals
+     Task 1: Image / Picture Gallery (styled version)
+     Student: Abel Asiedu
+     Theme: NBA Stars and Arenas
+     Layout and colours come from styles.css.
+     ============================================================ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A picture gallery of NBA players and arenas, with each player's position and what he is known for.">
+    <title>NBA Stars and Arenas - Picture Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to the gallery</a>
+
+    <!-- ===================== HEADER ===================== -->
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="image_gallery.html">
+                <span class="brand__mark" aria-hidden="true"></span>
+                NBA Stars and Arenas
+            </a>
+            <nav class="nav" aria-label="Main">
+                <a href="image_gallery.html" aria-current="page">Picture gallery</a>
+                <a href="video_gallery.html">Video gallery</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Marquee 1: welcome message, scrolls from right to left -->
+    <marquee class="ticker ticker--top" direction="left" behavior="scroll" scrollamount="8">
+        Welcome to the NBA Stars and Arenas Picture Gallery! &nbsp;&nbsp;&nbsp; Meet famous basketball players and visit famous arenas.
+    </marquee>
+
+    <main id="main">
+
+        <!-- ===================== HERO ===================== -->
+
+        <section class="hero">
+
+            <!-- Half basketball court in line art (decoration only) -->
+            <svg class="hero__court" viewBox="0 0 470 500" aria-hidden="true" focusable="false">
+                <g transform="translate(0 500) rotate(-90)">
+                    <rect class="draw d1" pathLength="1" x="0" y="0" width="500" height="470"/>
+                    <rect class="draw d2" pathLength="1" x="170" y="280" width="160" height="190"/>
+                    <path class="draw d3" pathLength="1" d="M30 470 L30 328 A237.5 237.5 0 0 1 470 328 L470 470"/>
+                    <path class="draw d4" pathLength="1" d="M190 280 A60 60 0 0 1 310 280"/>
+                    <path class="dash" d="M190 280 A60 60 0 0 0 310 280"/>
+                    <path class="draw d4" pathLength="1" d="M190 0 A60 60 0 0 0 310 0"/>
+                    <path class="draw d5" pathLength="1" d="M220 430 H280 M250 430 V425"/>
+                    <path class="draw d5" pathLength="1" d="M210 417.5 A40 40 0 0 1 290 417.5"/>
+                    <circle class="rim" cx="250" cy="417.5" r="7.5"/>
+                </g>
+            </svg>
+
+            <div class="wrap hero__grid">
+                <div class="hero__copy">
+                    <h1>NBA Stars and Arenas</h1>
+                    <p class="hero__lead">
+                        Nine players and two arenas from the world's top basketball league, each with a
+                        position, a team and the reason it is famous.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="#lakers">Meet the players</a>
+                        <a class="btn btn--ghost" href="video_gallery.html">Watch the highlights</a>
+                    </div>
+                    <p class="byline">Created by Abel Asiedu for PBSE307 Web Development Fundamentals, Pentecost University.</p>
+                </div>
+
+                <nav class="toc" aria-label="In this gallery">
+                    <ul>
+                        <li><a href="#lakers">Lakers legends <span>3 pictures</span></a></li>
+                        <li><a href="#champions">Champions from three teams <span>3 pictures</span></a></li>
+                        <li><a href="#action">Stars in action <span>3 pictures</span></a></li>
+                        <li><a href="#arenas">Famous arenas <span>2 pictures</span></a></li>
+                        <li><a href="#facts">Picture information table <span>11 rows</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- ===================== ABOUT ===================== -->
+
+        <section class="band" id="about" aria-labelledby="about-title">
+            <div class="wrap about">
+                <div>
+                    <h2 id="about-title">About this gallery</h2>
+                    <dl class="facts">
+                        <div><dt>League</dt><dd>National Basketball Association (NBA)</dd></div>
+                        <div><dt>Pictures</dt><dd>11: nine players and two arenas</dd></div>
+                        <div><dt>Teams</dt><dd>Lakers, Celtics, Bulls, Warriors, Clippers and 76ers</dd></div>
+                        <div><dt>Arenas</dt><dd>Madison Square Garden and Chase Center</dd></div>
+                    </dl>
+                </div>
+
+                <div class="about__copy">
+                    <p>
+                        This gallery is about the National Basketball Association (NBA), the top professional basketball
+                        league in North America. It brings together eleven pictures: nine of players in the jerseys of
+                        well-known teams such as the Los Angeles Lakers, the Boston Celtics, the Chicago Bulls, the Golden State
+                        Warriors, the Los Angeles Clippers and the Philadelphia 76ers, and two of the arenas where NBA
+                        basketball is played: Madison Square Garden in New York City and the Chase Center in San Francisco.
+                    </p>
+                    <p>
+                        The NBA was chosen as the theme because basketball is one of the most popular sports in the world,
+                        and the league is followed by millions of fans around the world. Visitors will see the pictures arranged
+                        in four sections: the Lakers legends, champions from Boston, Chicago and Golden State, stars in action,
+                        and famous arenas. Under every picture you will find the player's name, position, team and what he is
+                        famous for, and a table near the end gathers the same facts in one place. The subject matters because
+                        the NBA shows how teamwork, skill and hard work can inspire people of every age.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 1 : LAKERS ===================== -->
+
+        <section class="band band--mist" id="lakers" aria-labelledby="lakers-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="lakers-title">Purple and gold: Lakers legends</h2>
+                </div>
+
+                <!-- Marquee 2: moves left to right and bounces back (alternate) -->
+                <marquee class="ticker ticker--section" direction="right" behavior="alternate" scrollamount="4">
+                    Three famous players in Los Angeles Lakers jerseys
+                </marquee>
+
+                <div class="lineup">
+                    <figure class="plate t-lakers">
+                        <div class="frame">
+                            <img src="Images/image_04.jpg" width="332" height="665" alt="LeBron James in a white Lakers number 23 jersey dribbling the ball">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>LeBron James</h3>
+                            <p class="plate__team">Los Angeles Lakers</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Forward</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 23</dd></div>
+                                <div><dt>Known for</dt><dd>Being the NBA's all-time leading scorer, with 4 NBA championships and 4 MVP awards.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate t-lakers">
+                        <div class="frame">
+                            <img src="Images/image_05.jpg" width="207" height="415" alt="Magic Johnson in a navy and gold Lakers number 32 jersey dribbling">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Magic Johnson</h3>
+                            <p class="plate__team">Los Angeles Lakers</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Point guard</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 32</dd></div>
+                                <div><dt>Known for</dt><dd>Leading the "Showtime" Lakers to 5 NBA championships, winning 3 MVP awards, and his brilliant passing.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate t-lakers">
+                        <div class="frame">
+                            <img src="Images/image_07.jpg" width="227" height="445" alt="Kobe Bryant in a white Lakers number 24 jersey on the court">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Kobe Bryant</h3>
+                            <p class="plate__team">Los Angeles Lakers</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Shooting guard</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 24</dd></div>
+                                <div><dt>Known for</dt><dd>5 NBA championships, all with the Lakers, the 2008 MVP award, and scoring 81 points in one game in 2006.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 2 : CHAMPIONS ===================== -->
+
+        <section class="band" id="champions" aria-labelledby="champions-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="champions-title">Champions from Boston, Chicago and Golden State</h2>
+                    <p>Larry Bird, Michael Jordan and Stephen Curry each led a team to NBA championships.</p>
+                </div>
+
+                <div class="lineup">
+                    <figure class="plate t-celtics">
+                        <div class="frame">
+                            <img src="Images/image_08.jpg" width="343" height="687" alt="Larry Bird in a green Celtics number 33 jersey taking a jump shot">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Larry Bird</h3>
+                            <p class="plate__team">Boston Celtics</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Small forward</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 33</dd></div>
+                                <div><dt>Known for</dt><dd>3 NBA championships, 3 MVP awards in a row (1984 to 1986), and being one of the greatest shooters ever.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate t-bulls">
+                        <div class="frame">
+                            <img src="Images/image_06.jpg" width="250" height="367" alt="Michael Jordan in a red Bulls number 23 jersey holding a basketball">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Michael Jordan</h3>
+                            <p class="plate__team">Chicago Bulls</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Shooting guard</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 23</dd></div>
+                                <div><dt>Known for</dt><dd>6 NBA championships and 6 Finals MVP awards with the Bulls, 5 MVP awards and 10 scoring titles.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate t-warriors">
+                        <div class="frame">
+                            <img src="Images/image_09.jpg" width="250" height="413" alt="Stephen Curry in a blue Golden State Warriors number 30 jersey pointing upward while dribbling">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Stephen Curry</h3>
+                            <p class="plate__team">Golden State Warriors</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Point guard</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 30</dd></div>
+                                <div><dt>Known for</dt><dd>4 NBA championships, 2 MVP awards, and holding the NBA record for most three-pointers made.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 3 : STARS IN ACTION ===================== -->
+
+        <section class="band band--mist" id="action" aria-labelledby="action-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="action-title">Stars in action: Clippers, Celtics and 76ers</h2>
+                </div>
+
+                <!-- Marquee 3: slides in from the right and stops -->
+                <marquee class="ticker ticker--section" direction="left" behavior="slide" scrollamount="10">
+                    Shooting, dribbling and celebrating - three moments from NBA games!
+                </marquee>
+
+                <div class="lineup lineup--action">
+                    <figure class="plate t-clippers">
+                        <div class="frame">
+                            <img src="Images/image_01.jpg" width="452" height="678" alt="Kawhi Leonard in a white Clippers number 2 jersey holding the ball in a shooting stance">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Kawhi Leonard</h3>
+                            <p class="plate__team">Los Angeles Clippers</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Small forward</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 2</dd></div>
+                                <div><dt>Known for</dt><dd>Being a 2-time NBA Finals MVP (2014 and 2019) and a 2-time Defensive Player of the Year.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate t-celtics">
+                        <div class="frame">
+                            <img src="Images/image_02.jpg" width="476" height="644" alt="Jayson Tatum in a green Celtics number 0 jersey dribbling the ball">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Jayson Tatum</h3>
+                            <p class="plate__team">Boston Celtics</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>Forward</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 0</dd></div>
+                                <div><dt>Known for</dt><dd>Leading the Celtics to the 2024 NBA championship and being an All-Star and All-NBA player.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate plate--wide t-sixers">
+                        <div class="frame">
+                            <img class="pos-sixers" src="Images/image_03.jpg" width="588" height="393" alt="76ers player in a blue number 7 jersey shouting with teammates behind him">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Philadelphia 76ers player, No. 7</h3>
+                            <p class="plate__team">Philadelphia 76ers</p>
+                            <dl class="details">
+                                <div><dt>Position</dt><dd>To be confirmed</dd></div>
+                                <div><dt>Jersey</dt><dd>No. 7</dd></div>
+                                <div><dt>Known for</dt><dd>Shouting with emotion after a big moment, with teammates Nos. 30 and 77 behind him. The 76ers are one of the NBA's oldest teams.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 4 : ARENAS ===================== -->
+
+        <section class="band" id="arenas" aria-labelledby="arenas-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="arenas-title">Famous arenas</h2>
+                    <p>Two of the buildings where NBA games are played.</p>
+                </div>
+
+                <div class="lineup lineup--arenas">
+                    <figure class="plate t-arena">
+                        <div class="frame">
+                            <img class="pos-garden" src="Images/image_10.jpg" width="452" height="678" alt="Aerial view of Madison Square Garden in New York City">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Madison Square Garden</h3>
+                            <p class="plate__team">New York City</p>
+                            <dl class="details">
+                                <div><dt>Home team</dt><dd>New York Knicks</dd></div>
+                                <div><dt>Known for</dt><dd>Its nickname, "The World's Most Famous Arena". The Empire State Building stands behind it in the picture.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="plate plate--wide t-arena">
+                        <div class="frame">
+                            <img class="pos-chase" src="Images/image_11.jpg" width="588" height="330" alt="Aerial view of the Chase Center in San Francisco">
+                        </div>
+                        <figcaption class="plate__body">
+                            <h3>Chase Center</h3>
+                            <p class="plate__team">San Francisco</p>
+                            <dl class="details">
+                                <div><dt>Home team</dt><dd>Golden State Warriors, Stephen Curry's team</dd></div>
+                                <div><dt>Known for</dt><dd>Being the home of the Warriors. It sits beside San Francisco Bay.</dd></div>
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== IMAGE INFORMATION TABLE ===================== -->
+
+        <section class="band band--mist" id="facts" aria-labelledby="facts-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="facts-title">Picture information table</h2>
+                </div>
+
+                <!-- Marquee 4: text scrolls upwards -->
+                <marquee class="ticker ticker--section ticker--up" direction="up" behavior="scroll" scrollamount="2">
+                    The table below gathers the facts about each picture in one place.
+                </marquee>
+
+                <div class="table-wrap">
+                    <table class="data">
+                        <caption class="sr-only">Facts about each of the 11 pictures in the gallery</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Picture No.</th>
+                                <th scope="col">Image file</th>
+                                <th scope="col">Player / venue</th>
+                                <th scope="col">Team</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Known for</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="num">1</td>
+                                <td class="file">Images/image_04.jpg</td>
+                                <td class="name">LeBron James (No. 23)</td>
+                                <td>Los Angeles Lakers</td>
+                                <td>Forward</td>
+                                <td>All-time leading scorer in the NBA; 4 championships and 4 MVP awards.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">2</td>
+                                <td class="file">Images/image_05.jpg</td>
+                                <td class="name">Magic Johnson (No. 32)</td>
+                                <td>Los Angeles Lakers</td>
+                                <td>Point guard</td>
+                                <td>5 championships with the "Showtime" Lakers; 3 MVP awards; great passer.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">3</td>
+                                <td class="file">Images/image_07.jpg</td>
+                                <td class="name">Kobe Bryant (No. 24)</td>
+                                <td>Los Angeles Lakers</td>
+                                <td>Shooting guard</td>
+                                <td>5 championships; 2008 MVP; scored 81 points in a game in 2006.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">4</td>
+                                <td class="file">Images/image_08.jpg</td>
+                                <td class="name">Larry Bird (No. 33)</td>
+                                <td>Boston Celtics</td>
+                                <td>Small forward</td>
+                                <td>3 championships; 3 MVP awards in a row (1984 to 1986); great shooter.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">5</td>
+                                <td class="file">Images/image_06.jpg</td>
+                                <td class="name">Michael Jordan (No. 23)</td>
+                                <td>Chicago Bulls</td>
+                                <td>Shooting guard</td>
+                                <td>6 championships and 6 Finals MVP awards; 5 MVP awards; 10 scoring titles.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">6</td>
+                                <td class="file">Images/image_09.jpg</td>
+                                <td class="name">Stephen Curry (No. 30)</td>
+                                <td>Golden State Warriors</td>
+                                <td>Point guard</td>
+                                <td>4 championships; 2 MVP awards; NBA record for most three-pointers made.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">7</td>
+                                <td class="file">Images/image_01.jpg</td>
+                                <td class="name">Kawhi Leonard (No. 2)</td>
+                                <td>Los Angeles Clippers</td>
+                                <td>Small forward</td>
+                                <td>2-time Finals MVP (2014, 2019); 2-time Defensive Player of the Year.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">8</td>
+                                <td class="file">Images/image_02.jpg</td>
+                                <td class="name">Jayson Tatum (No. 0)</td>
+                                <td>Boston Celtics</td>
+                                <td>Forward</td>
+                                <td>Led the Celtics to the 2024 championship; All-Star and All-NBA player.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">9</td>
+                                <td class="file">Images/image_03.jpg</td>
+                                <td class="name">76ers player (No. 7)</td>
+                                <td>Philadelphia 76ers</td>
+                                <td>To be confirmed</td>
+                                <td>Celebrating a big moment with teammates Nos. 30 and 77 behind him.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">10</td>
+                                <td class="file">Images/image_10.jpg</td>
+                                <td class="name">Madison Square Garden</td>
+                                <td>New York Knicks (home)</td>
+                                <td>Not applicable (arena)</td>
+                                <td>"The World's Most Famous Arena", in New York City.</td>
+                            </tr>
+                            <tr>
+                                <td class="num">11</td>
+                                <td class="file">Images/image_11.jpg</td>
+                                <td class="name">Chase Center</td>
+                                <td>Golden State Warriors (home)</td>
+                                <td>Not applicable (arena)</td>
+                                <td>Home arena of the Warriors, beside San Francisco Bay.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== LISTS ===================== -->
+
+        <section class="band" id="explore" aria-labelledby="explore-title">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2 id="explore-title">Gallery highlights and how to explore</h2>
+                </div>
+
+                <div class="panels">
+                    <div class="panel">
+                        <h3>Categories in this gallery</h3>
+                        <!-- Unordered list with square markers -->
+                        <ul type="square">
+                            <li>Lakers legends: LeBron James, Magic Johnson and Kobe Bryant</li>
+                            <li>Champions: Larry Bird, Michael Jordan and Stephen Curry</li>
+                            <li>Stars in action: Kawhi Leonard, Jayson Tatum and a 76ers player</li>
+                            <li>Famous NBA arenas: Madison Square Garden and Chase Center</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Suggested order for exploring</h3>
+                        <!-- Ordered list with capital letters -->
+                        <ol type="A">
+                            <li>Read the introduction at the top of the page.</li>
+                            <li>Meet the Lakers legends.</li>
+                            <li>Compare the champions.</li>
+                            <li>Look at the stars in action.</li>
+                            <li>Visit the two arenas.</li>
+                            <li>Check the information table to review the facts.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Marquee 5: closing message -->
+    <marquee class="ticker ticker--close" direction="right" behavior="scroll" scrollamount="5">
+        Thank you for visiting the NBA Stars and Arenas Picture Gallery! &nbsp;&nbsp;&nbsp; See the Video Gallery page for NBA highlight clips.
+    </marquee>
+
+    <!-- ===================== FOOTER ===================== -->
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div>
+                <a class="brand" href="image_gallery.html">
+                    <span class="brand__mark" aria-hidden="true"></span>
+                    NBA Stars and Arenas
+                </a>
+                <p>Created by Abel Asiedu for PBSE307 Web Development Fundamentals at Pentecost University.</p>
+                <p>The pictures belong to their original owners and appear here for a class assignment only.</p>
+            </div>
+            <nav aria-label="Footer">
+                <ul>
+                    <li><a href="image_gallery.html">Picture gallery</a></li>
+                    <li><a href="video_gallery.html">Video gallery</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+
+</html>
