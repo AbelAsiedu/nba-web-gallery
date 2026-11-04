@@ -1,0 +1,17 @@
+FONTS USED IN THE STYLED VERSION
+================================
+
+Inter and Inter Display (inter-*.woff)
+  Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
+  Licensed under the SIL Open Font License, Version 1.1.
+  The files here are Latin-only subsets converted to WOFF.
+
+Lora (Lora-Variable.ttf)
+  Copyright 2011 The Lora Project Authors
+  (https://github.com/cyrealtype/Lora-Cyrillic), with Reserved Font Name "Lora".
+  Licensed under the SIL Open Font License, Version 1.1.
+  Included unmodified.
+
+The full licence text and FAQ are at https://openfontlicense.org
+(also https://scripts.sil.org/OFL). The licence allows these fonts to be
+used, bundled and redistributed, provided this notice stays with them.
