@@ -8,18 +8,109 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="hero">
-        <div class="wrap hero__copy">
-            <h1>NBA Stars and Arenas</h1>
-            <p class="hero__lead">
-                Explore the picture gallery of NBA legends and arenas, or watch the highlights collection.
-            </p>
-            <div class="hero__actions">
-                <a class="btn btn--primary" href="image_gallery.html">Picture gallery</a>
-                <a class="btn btn--ghost" href="video_gallery.html">Video gallery</a>
-            </div>
-            <p class="byline">Created by Abel Asiedu for PBSE307 Web Development Fundamentals.</p>
+    <a class="skip-link" href="#explore">Skip to the galleries</a>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="index.html"><span class="brand__mark" aria-hidden="true"></span>NBA Stars and Arenas</a>
+            <nav class="nav" aria-label="Main">
+                <a href="image_gallery.html">Pictures</a>
+                <a href="video_gallery.html">Highlights</a>
+            </nav>
         </div>
+    </header>
+
+    <main>
+        <section class="hero landing-hero">
+            <svg class="hero__court" viewBox="0 0 470 500" aria-hidden="true" focusable="false">
+                <g transform="translate(0 500) rotate(-90)">
+                    <rect class="draw d1" pathLength="1" x="0" y="0" width="500" height="470"/>
+                    <rect class="draw d2" pathLength="1" x="170" y="280" width="160" height="190"/>
+                    <path class="draw d3" pathLength="1" d="M30 470 L30 328 A237.5 237.5 0 0 1 470 328 L470 470"/>
+                    <path class="draw d4" pathLength="1" d="M190 280 A60 60 0 0 1 310 280"/>
+                    <path class="draw d5" pathLength="1" d="M220 430 H280 M250 430 V425"/>
+                    <circle class="rim" cx="250" cy="417.5" r="7.5"/>
+                </g>
+            </svg>
+            <div class="wrap landing-hero__grid">
+                <div class="hero__copy">
+                    <p class="eyebrow"><span class="eyebrow__dot"></span> Courtside collection · PBSE307</p>
+                    <h1>Where legends<br><em>leave a mark.</em></h1>
+                    <p class="hero__lead">Step into a visual celebration of NBA greatness: iconic players, legendary arenas and the moments that make basketball unforgettable.</p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="image_gallery.html">Explore the pictures <span aria-hidden="true">→</span></a>
+                        <a class="btn btn--ghost" href="video_gallery.html">Watch the highlights <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <p class="byline">Created by Abel Asiedu · Pentecost University</p>
+                </div>
+                <div class="landing-orbit" aria-hidden="true">
+                    <div class="landing-orbit__ball"></div>
+                    <span class="landing-orbit__label landing-orbit__label--one">11 images</span>
+                    <span class="landing-orbit__label landing-orbit__label--two">06 clips</span>
+                    <span class="landing-orbit__label landing-orbit__label--three">01 love<br>of the game</span>
+                </div>
+            </div>
+            <div class="wrap landing-scroll"><span>Scroll to explore</span><i></i></div>
+        </section>
+
+        <marquee class="ticker ticker--top" direction="left" behavior="scroll" scrollamount="7">
+            WELCOME TO THE COURT &nbsp;&nbsp;&nbsp; LAKERS LEGENDS · CELTICS CHAMPIONS · BULLS ICONS · WARRIORS MAGIC · ARENAS THAT ECHO
+        </marquee>
+
+        <section class="landing-intro band" id="explore">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="eyebrow eyebrow--light">The collection</p>
+                    <h2>More than a gallery.<br><em>A game-day experience.</em></h2>
+                    <p>Two destinations. One love for the game. Browse the stories behind basketball's biggest names, then press play on the action.</p>
+                </div>
+                <div class="landing-cards">
+                    <a class="landing-card landing-card--pictures" href="image_gallery.html">
+                        <span class="landing-card__number">01</span>
+                        <span class="landing-card__icon" aria-hidden="true">◉</span>
+                        <h3>Stars &amp; Arenas</h3>
+                        <p>Meet nine icons and visit two unforgettable homes of basketball.</p>
+                        <span class="landing-card__link">Enter the picture gallery <b>→</b></span>
+                    </a>
+                    <a class="landing-card landing-card--videos" href="video_gallery.html">
+                        <span class="landing-card__number">02</span>
+                        <span class="landing-card__icon" aria-hidden="true">▶</span>
+                        <h3>Highlights</h3>
+                        <p>Feel the speed of dunks, shooting and defence across six short clips.</p>
+                        <span class="landing-card__link">Enter the video gallery <b>→</b></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="landing-facts band band--mist">
+            <div class="wrap">
+                <div class="landing-facts__heading">
+                    <p class="eyebrow eyebrow--light">By the numbers</p>
+                    <h2>A small collection<br>with a big-game feel.</h2>
+                </div>
+                <div class="landing-stat-grid">
+                    <div class="landing-stat"><strong>11</strong><span>photographs</span><small>players + arenas</small></div>
+                    <div class="landing-stat"><strong>06</strong><span>video clips</span><small>dunks · shooting · defence</small></div>
+                    <div class="landing-stat"><strong>06</strong><span>NBA teams</span><small>from six basketball cities</small></div>
+                    <div class="landing-stat"><strong>∞</strong><span>ways to explore</span><small>built for every fan</small></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="landing-quote band">
+            <div class="wrap landing-quote__inner">
+                <span class="landing-quote__mark" aria-hidden="true">“</span>
+                <blockquote>The strength of the team is each individual member. The strength of each member is the team.</blockquote>
+                <cite>— Phil Jackson</cite>
+                <a class="btn btn--dark" href="image_gallery.html">Start exploring <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
     </main>
+    <footer class="site-footer">
+        <div class="wrap">
+            <p><strong>NBA Stars and Arenas</strong><br>Web Development Fundamentals · PBSE307</p>
+            <p>Designed and built by Abel Asiedu<br><a href="image_gallery.html">Pictures</a> · <a href="video_gallery.html">Highlights</a></p>
+        </div>
+    </footer>
 </body>
 </html>
